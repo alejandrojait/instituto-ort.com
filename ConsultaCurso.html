@@ -1,0 +1,244 @@
+<html>
+
+<head>
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+
+<body style="margin: 20px;">
+    <div>
+        <h2>Instituto de Tecnolog&iacute;a ORT</h2>
+        <h4>Consult&aacute; tu curso</h4>
+        <div class="form-inline">
+            <input class="form-control mr-1" placeholder="Ingres&aacute; tu DNI" id="dni">
+            <button class="btn btn-primary mr-1" id="consultar">Consultar</button>
+            <button class="btn btn-primary" id="limpiar">Otra consulta</button>
+        </div>
+        <h5 style="padding-top: 10px;" id="curso"></h5>
+    </div>
+
+    <script>
+        $(function () {
+            var alumnos = [];
+            alumnos['19021557'] = '1º1º A';
+            alumnos['32237229'] = '1º1º A';
+            alumnos['37687345'] = '1º1º A';
+            alumnos['40642909'] = '1º1º A';
+            alumnos['27226842'] = '1º1º A';
+            alumnos['32525970'] = '1º1º A';
+            alumnos['34870692'] = '1º1º A';
+            alumnos['39914325'] = '1º1º A';
+            alumnos['29541944'] = '1º1º A';
+            alumnos['39578786'] = '1º1º A';
+            alumnos['42150247'] = '1º1º A';
+            alumnos['27346358'] = '1º1º A';
+            alumnos['38441772'] = '1º1º A';
+            alumnos['43086759'] = '1º1º A';
+            alumnos['23901134'] = '1º1º A';
+            alumnos['40520763'] = '1º1º A';
+            alumnos['42498110'] = '1º1º A';
+            alumnos['95956209'] = '1º1º A';
+            alumnos['34343569'] = '1º1º A';
+            alumnos['33241569'] = '1º1º A';
+            alumnos['34072212'] = '1º1º A';
+            alumnos['43100559'] = '1º1º A';
+            alumnos['40901761'] = '1º1º A';
+            alumnos['38165824'] = '1º1º A';
+            alumnos['42178209'] = '1º1º B';
+            alumnos['33192155'] = '1º1º B';
+            alumnos['42498978'] = '1º1º B';
+            alumnos['38304968'] = '1º1º B';
+            alumnos['40008825'] = '1º1º B';
+            alumnos['35992174'] = '1º1º B';
+            alumnos['94177014'] = '1º1º B';
+            alumnos['42822816'] = '1º1º B';
+            alumnos['32592850'] = '1º1º B';
+            alumnos['42879000'] = '1º1º B';
+            alumnos['39267949'] = '1º1º B';
+            alumnos['39069436'] = '1º1º B';
+            alumnos['41778027'] = '1º1º B';
+            alumnos['34519386'] = '1º1º B';
+            alumnos['41471690'] = '1º1º B';
+            alumnos['37548705'] = '1º1º B';
+            alumnos['39644157'] = '1º1º B';
+            alumnos['37033205'] = '1º1º B';
+            alumnos['31428271'] = '1º1º B';
+            alumnos['29273912'] = '1º1º B';
+            alumnos['38157652'] = '1º1º B';
+            alumnos['30943235'] = '1º1º B';
+            alumnos['93601193'] = '1º1º B';
+            alumnos['33173022'] = '1º1º B';
+            alumnos['35145013'] = '1º1º C';
+            alumnos['31675172'] = '1º1º C';
+            alumnos['95721574'] = '1º1º C';
+            alumnos['32760349'] = '1º1º C';
+            alumnos['28131538'] = '1º1º C';
+            alumnos['40010786'] = '1º1º C';
+            alumnos['40901550'] = '1º1º C';
+            alumnos['39909013'] = '1º1º C';
+            alumnos['14309625'] = '1º1º C';
+            alumnos['40013454'] = '1º1º C';
+            alumnos['38996661'] = '1º1º C';
+            alumnos['38070183'] = '1º1º C';
+            alumnos['29004601'] = '1º1º C';
+            alumnos['38820337'] = '1º1º C';
+            alumnos['26733423'] = '1º1º C';
+            alumnos['32272698'] = '1º1º C';
+            alumnos['39558238'] = '1º1º C';
+            alumnos['41638819'] = '1º1º C';
+            alumnos['25896039'] = '1º1º C';
+            alumnos['32155797'] = '1º1º C';
+            alumnos['38925961'] = '1º1º C';
+            alumnos['36929971'] = '1º1º C';
+            alumnos['37066136'] = '1º1º C';
+            alumnos['38618991'] = '1º1º C';
+            alumnos['73481877'] = '1º1º D';
+            alumnos['34445391'] = '1º1º D';
+            alumnos['34890139'] = '1º1º D';
+            alumnos['95592329'] = '1º1º D';
+            alumnos['39759596'] = '1º1º D';
+            alumnos['32149924'] = '1º1º D';
+            alumnos['43321329'] = '1º1º D';
+            alumnos['32478814'] = '1º1º D';
+            alumnos['43325124'] = '1º1º D';
+            alumnos['39912848'] = '1º1º D';
+            alumnos['38708301'] = '1º1º D';
+            alumnos['33258147'] = '1º1º D';
+            alumnos['41400291'] = '1º1º D';
+            alumnos['33032717'] = '1º1º D';
+            alumnos['38359314'] = '1º1º D';
+            alumnos['39847671'] = '1º1º D';
+            alumnos['35569307'] = '1º1º D';
+            alumnos['30980712'] = '1º1º D';
+            alumnos['32553810'] = '1º1º D';
+            alumnos['34848989'] = '1º1º D';
+            alumnos['37033374'] = '1º1º D';
+            alumnos['39410643'] = '1º1º D';
+            alumnos['39387916'] = '1º1º D';
+            alumnos['40511322'] = '1º1º D';
+            alumnos['43104262'] = '1º1º E';
+            alumnos['42249005'] = '1º1º E';
+            alumnos['39690694'] = '1º1º E';
+            alumnos['31234284'] = '1º1º E';
+            alumnos['36298693'] = '1º1º E';
+            alumnos['43243543'] = '1º1º E';
+            alumnos['36754993'] = '1º1º E';
+            alumnos['37933873'] = '1º1º E';
+            alumnos['27659741'] = '1º1º E';
+            alumnos['35337495'] = '1º1º E';
+            alumnos['38893043'] = '1º1º E';
+            alumnos['28396665'] = '1º1º E';
+            alumnos['26926938'] = '1º1º E';
+            alumnos['33458571'] = '1º1º E';
+            alumnos['42252213'] = '1º1º E';
+            alumnos['38877347'] = '1º1º E';
+            alumnos['32311269'] = '1º1º E';
+            alumnos['31559691'] = '1º1º E';
+            alumnos['37792918'] = '1º1º E';
+            alumnos['42567321'] = '1º1º E';
+            alumnos['33111203'] = '1º1º E';
+            alumnos['40640655'] = '1º1º E';
+            alumnos['39211732'] = '1º1º E';
+            alumnos['24923908'] = '1º1º E';
+            alumnos['38310723'] = '1º1º F';
+            alumnos['94931471'] = '1º1º F';
+            alumnos['41918430'] = '1º1º F';
+            alumnos['32645390'] = '1º1º F';
+            alumnos['42724605'] = '1º1º F';
+            alumnos['42459659'] = '1º1º F';
+            alumnos['40539892'] = '1º1º F';
+            alumnos['34585275'] = '1º1º F';
+            alumnos['30700167'] = '1º1º F';
+            alumnos['33007574'] = '1º1º F';
+            alumnos['41557605'] = '1º1º F';
+            alumnos['33203402'] = '1º1º F';
+            alumnos['41899931'] = '1º1º F';
+            alumnos['41558077'] = '1º1º F';
+            alumnos['30881705'] = '1º1º F';
+            alumnos['34135910'] = '1º1º F';
+            alumnos['36930199'] = '1º1º F';
+            alumnos['41200110'] = '1º1º F';
+            alumnos['39317382'] = '1º1º F';
+            alumnos['32845639'] = '1º1º F';
+            alumnos['40395629'] = '1º1º F';
+            alumnos['36645538'] = '1º1º F';
+            alumnos['31764104'] = '1º1º F';
+            alumnos['43064423'] = '1º1º G';
+            alumnos['39372093'] = '1º1º G';
+            alumnos['38444149'] = '1º1º G';
+            alumnos['29391620'] = '1º1º G';
+            alumnos['35117495'] = '1º1º G';
+            alumnos['37277013'] = '1º1º G';
+            alumnos['36903846'] = '1º1º G';
+            alumnos['36720978'] = '1º1º G';
+            alumnos['34754853'] = '1º1º G';
+            alumnos['34309373'] = '1º1º G';
+            alumnos['42658033'] = '1º1º G';
+            alumnos['31407854'] = '1º1º G';
+            alumnos['36930323'] = '1º1º G';
+            alumnos['95866040'] = '1º1º G';
+            alumnos['42658219'] = '1º1º G';
+            alumnos['30591714'] = '1º1º G';
+            alumnos['30653187'] = '1º1º G';
+            alumnos['38356686'] = '1º1º G';
+            alumnos['94696280'] = '1º1º G';
+            alumnos['39760252'] = '1º1º G';
+            alumnos['26375204'] = '1º1º G';
+            alumnos['39184718'] = '1º1º G';
+            alumnos['37546807'] = '1º1º G';
+            alumnos['38242886'] = '1º1º G';
+            alumnos['42951410'] = '1º1º H';
+            alumnos['35761837'] = '1º1º H';
+            alumnos['29736411'] = '1º1º H';
+            alumnos['18854687'] = '1º1º H';
+            alumnos['39207818'] = '1º1º H';
+            alumnos['43034733'] = '1º1º H';
+            alumnos['26000275'] = '1º1º H';
+            alumnos['42145613'] = '1º1º H';
+            alumnos['29078045'] = '1º1º H';
+            alumnos['38356684'] = '1º1º H';
+            alumnos['36158607'] = '1º1º H';
+            alumnos['34682207'] = '1º1º H';
+            alumnos['38890549'] = '1º1º H';
+            alumnos['36155711'] = '1º1º H';
+            alumnos['39774316'] = '1º1º H';
+            alumnos['40021174'] = '1º1º H';
+            alumnos['34270560'] = '1º1º H';
+            alumnos['92849913'] = '1º1º H';
+            alumnos['34520131'] = '1º1º H';
+            alumnos['38622185'] = '1º1º H';
+            alumnos['28059370'] = '1º1º H';
+            alumnos['40948143'] = '1º1º H';
+            alumnos['29319574'] = '1º1º H';
+            alumnos['38151265'] = '1º1º H';
+            alumnos['33810453'] = 'TS2A';
+            alumnos['18534340'] = 'TS2A';
+            alumnos['30211197'] = 'TS2B';
+            alumnos['20426501'] = 'TS2B';
+            alumnos['19017819'] = 'TS2B';
+            alumnos['35323119'] = 'TS2C';
+            alumnos['33339221'] = 'TS2C';
+            alumnos['35837099'] = 'TS3A';
+            alumnos['37608436'] = 'TS3A';
+
+            $('#consultar').click(function () {
+                if (alumnos[$('#dni').val()]) {
+                    $('#curso').html('Tu curso es el:&nbsp;<span>' + alumnos[$('#dni').val()] + '</span>');
+                } else {
+                    $('#curso').html('No hemos encontrado tu DNI en nuestra base de datos.');
+                }
+            });
+
+            $('#limpiar').click(function() {
+                $('#dni').val('');
+                $('#curso').html('');
+                $('#dni').focus();
+            });
+
+            $('#dni').focus();
+        });
+    </script>
+</body>
+
+</html>
